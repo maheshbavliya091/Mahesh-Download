@@ -14,24 +14,30 @@ p { color: #555; margin-top: 12px; }
 <button onclick="downloadTwice()">Download Game</button>
 <p id="status"></p>
 <script>
-const DOWNLOAD_COUNT = 5;
-function downloadTwice() {
-  const fileUrl = "https://hil-speed.hetzner.com/10GB.bin";
-  document.getElementById('status').innerText = "Download shuru thai rahyu chhe...";
-  for (let i = 1; i <= DOWNLOAD_COUNT; i++) {
-    setTimeout(() => {
-      const link = document.createElement('a');
-      link.href = fileUrl;
-      link.download = "file" + i + ".bin";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      if (i === DOWNLOAD_COUNT) {
-        document.getElementById('status').innerText = DOWNLOAD_COUNT + " downloads chalu thai gaya!";
-      }
-    }, i *3000);
-  }
-}
-</script>
+const DOWNLOAD_COUNT = 2;
+const fileUrls = [
+  "https://hil-speed.hetzner.com/10GB.bin",
+    "https://fsn-speed.hetzner.com/10GB.bin",
+      "https://nbg-speed.hetzner.com/10GB.bin",
+        "https://ash-speed.hetzner.com/10GB.bin",
+        ];
+
+        function downloadTwice() {
+          document.getElementById('status').innerText = "Download shuru thai rahyu chhe...";
+            for (let i = 0; i < DOWNLOAD_COUNT; i++) {
+                setTimeout(() => {
+                      const link = document.createElement('a');
+                            link.href = fileUrls[i];
+                                  link.download = "file" + (i+1) + ".bin";
+                                        document.body.appendChild(link);
+                                              link.click();
+                                                    document.body.removeChild(link);
+                                                          if (i === DOWNLOAD_COUNT - 1) {
+                                                                  document.getElementById('status').innerText = DOWNLOAD_COUNT + " downloads chalu thai gaya!";
+                                                                        }
+                                                                            }, i * 1000);
+                                                                              }
+                                                                              }
+<script>
 </body>
 </html>

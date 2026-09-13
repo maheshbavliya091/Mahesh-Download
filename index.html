@@ -14,7 +14,7 @@ label { font-size: 16px; color: #333; }
 </head>
 <body>
 <label>Ketli vaar download karvu chhe?</label><br><br>
-<input type="number" id="downloadCount" value="2" min="1" max="5">
+<input type="number" id="downloadCount" value="2" min="1" max="3">
 <br>
 <button onclick="startDownload()">Download Game</button>
 <p id="status"></p>
@@ -22,9 +22,7 @@ label { font-size: 16px; color: #333; }
 var fileUrls = [
 "https://hil-speed.hetzner.com/10GB.bin",
 "https://proof.ovh.net/files/10Gb.dat",
-"https://bouygues.testdebit.info/10G.iso",
-"https://speedtest.tele2.net/10GB.zip",
-"https://speed.cloudflare.com/__down?bytes=10737418240"
+"https://proof.ovh.net/files/10Gb.dat"
 ];
 function startDownload() {
 var count = parseInt(document.getElementById("downloadCount").value);
@@ -32,17 +30,13 @@ if (count < 1 || count > fileUrls.length) {
 document.getElementById("status").innerText = "1 thi " + fileUrls.length + " sudhi j number nakho!";
 return;
 }
-document.getElementById("status").innerText = "Download shuru thai rahyu chhe...";
 for (var i = 0; i < count; i++) {
-(function(index) {
-setTimeout(function() {
-window.open(fileUrls[index], "_blank");
-if (index === count - 1) {
+var iframe = document.createElement("iframe");
+iframe.style.display = "none";
+iframe.src = fileUrls[i];
+document.body.appendChild(iframe);
+}
 document.getElementById("status").innerText = count + " downloads chalu thai gaya!";
-}
-}, index * 2000);
-})(i);
-}
 }
 </script>
 </body>

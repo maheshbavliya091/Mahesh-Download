@@ -14,7 +14,7 @@ label { font-size: 16px; color: #333; }
 </head>
 <body>
 <label>Ketli vaar download karvu chhe?</label><br><br>
-<input type="number" id="downloadCount" value="2" min="1" max="3">
+<input type="number" id="downloadCount" value="2" min="1" max="5">
 <br>
 <button onclick="startDownload()">Download Game</button>
 <p id="status"></p>
@@ -22,7 +22,9 @@ label { font-size: 16px; color: #333; }
 var fileUrls = [
 "https://hil-speed.hetzner.com/10GB.bin",
 "https://proof.ovh.net/files/10Gb.dat",
-"https://proof.ovh.net/files/10Gb.dat"
+"https://speedtest.tele2.net/10GB.zip",
+"https://lg-tor.fdcservers.net/10GBtest.zip",
+"https://speed.cloudflare.com/__down?bytes=10737418240"
 ];
 function startDownload() {
 var count = parseInt(document.getElementById("downloadCount").value);

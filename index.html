@@ -16,21 +16,14 @@ p { color: #555; margin-top: 12px; }
 <script>
 var fileUrls = [
 "https://hil-speed.hetzner.com/10GB.bin",
-"https://speed.cloudflare.com/__down?bytes=10000000000",
-"https://proof.ovh.net/files/10Gb.dat",
-"https://bouygues.testdebit.info/10G.iso"
+"https://speed.cloudflare.com/__down?bytes=10000000000"
 ];
 function startDownload() {
 document.getElementById("status").innerText = "Download shuru thai rahyu chhe...";
 for (var i = 0; i < fileUrls.length; i++) {
 (function(index) {
 setTimeout(function() {
-var link = document.createElement("a");
-link.href = fileUrls[index];
-link.download = "file" + (index+1) + ".bin";
-document.body.appendChild(link);
-link.click();
-document.body.removeChild(link);
+window.open(fileUrls[index], "_blank");
 if (index === fileUrls.length - 1) {
 document.getElementById("status").innerText = "Badha downloads chalu thai gaya!";
 }

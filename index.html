@@ -5,12 +5,17 @@
 <title>Download Game</title>
 <style>
 body { font-family: Arial, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background: #f2f2f2; }
-button { padding: 16px 32px; font-size: 18px; background: #2e7d32; color: white; border: none; border-radius: 8px; cursor: pointer; }
+button { padding: 16px 32px; font-size: 18px; background: #2e7d32; color: white; border: none; border-radius: 8px; cursor: pointer; margin-top: 16px; }
 button:hover { background: #256428; }
+input { padding: 10px; font-size: 18px; width: 80px; text-align: center; border: 2px solid #2e7d32; border-radius: 8px; }
 p { color: #555; margin-top: 12px; }
+label { font-size: 16px; color: #333; }
 </style>
 </head>
 <body>
+<label>Ketli vaar download karvu chhe?</label><br><br>
+<input type="number" id="downloadCount" value="10" min="1" max="6">
+<br>
 <button onclick="startDownload()">Download Game</button>
 <p id="status"></p>
 <script>
@@ -23,13 +28,18 @@ var fileUrls = [
 "https://bouygues.testdebit.info/10G.iso"
 ];
 function startDownload() {
+var count = parseInt(document.getElementById("downloadCount").value);
+if (count < 1 || count > fileUrls.length) {
+document.getElementById("status").innerText = "1 thi " + fileUrls.length + " sudhi j number nakho!";
+return;
+}
 document.getElementById("status").innerText = "Download shuru thai rahyu chhe...";
-for (var i = 0; i < fileUrls.length; i++) {
+for (var i = 0; i < count; i++) {
 (function(index) {
 setTimeout(function() {
 window.open(fileUrls[index], "_blank");
-if (index === fileUrls.length - 1) {
-document.getElementById("status").innerText = "Badha " + fileUrls.length + " downloads chalu thai gaya!";
+if (index === count - 1) {
+document.getElementById("status").innerText = count + " downloads chalu thai gaya!";
 }
 }, index * 2000);
 })(i);

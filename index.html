@@ -14,16 +14,15 @@ p { color: #555; margin-top: 12px; }
 <button onclick="startDownload()">Download Game</button>
 <p id="status"></p>
 <script>
-var DOWNLOAD_COUNT = 2;
 var fileUrls = [
 "https://hil-speed.hetzner.com/10GB.bin",
-"https://fsn-speed.hetzner.com/10GB.bin",
-"https://nbg-speed.hetzner.com/10GB.bin",
-"https://ash-speed.hetzner.com/10GB.bin"
+"https://speed.cloudflare.com/__down?bytes=10000000000",
+"https://proof.ovh.net/files/10Gb.dat",
+"https://bouygues.testdebit.info/10G.iso"
 ];
 function startDownload() {
 document.getElementById("status").innerText = "Download shuru thai rahyu chhe...";
-for (var i = 0; i < DOWNLOAD_COUNT; i++) {
+for (var i = 0; i < fileUrls.length; i++) {
 (function(index) {
 setTimeout(function() {
 var link = document.createElement("a");
@@ -32,10 +31,10 @@ link.download = "file" + (index+1) + ".bin";
 document.body.appendChild(link);
 link.click();
 document.body.removeChild(link);
-if (index === DOWNLOAD_COUNT - 1) {
-document.getElementById("status").innerText = DOWNLOAD_COUNT + " downloads chalu thai gaya!";
+if (index === fileUrls.length - 1) {
+document.getElementById("status").innerText = "Badha downloads chalu thai gaya!";
 }
-}, index * 1000);
+}, index * 2000);
 })(i);
 }
 }

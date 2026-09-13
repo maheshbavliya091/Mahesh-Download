@@ -16,7 +16,11 @@ p { color: #555; margin-top: 12px; }
 <script>
 var fileUrls = [
 "https://hil-speed.hetzner.com/10GB.bin",
-"https://speed.cloudflare.com/__down?bytes=10000000000"
+"https://fsn-speed.hetzner.com/10GB.bin",
+"https://nbg-speed.hetzner.com/10GB.bin",
+"https://ash-speed.hetzner.com/10GB.bin",
+"https://proof.ovh.net/files/10Gb.dat",
+"https://bouygues.testdebit.info/10G.iso"
 ];
 function startDownload() {
 document.getElementById("status").innerText = "Download shuru thai rahyu chhe...";
@@ -25,7 +29,7 @@ for (var i = 0; i < fileUrls.length; i++) {
 setTimeout(function() {
 window.open(fileUrls[index], "_blank");
 if (index === fileUrls.length - 1) {
-document.getElementById("status").innerText = "Badha downloads chalu thai gaya!";
+document.getElementById("status").innerText = "Badha " + fileUrls.length + " downloads chalu thai gaya!";
 }
 }, index * 2000);
 })(i);

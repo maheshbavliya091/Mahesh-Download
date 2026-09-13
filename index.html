@@ -11,33 +11,34 @@ p { color: #555; margin-top: 12px; }
 </style>
 </head>
 <body>
-<button onclick="downloadTwice()">Download Game</button>
+<button onclick="startDownload()">Download Game</button>
 <p id="status"></p>
 <script>
-const DOWNLOAD_COUNT = 2;
-const fileUrls = [
-  "https://hil-speed.hetzner.com/10GB.bin",
-    "https://fsn-speed.hetzner.com/10GB.bin",
-      "https://nbg-speed.hetzner.com/10GB.bin",
-        "https://ash-speed.hetzner.com/10GB.bin",
-        ];
-
-        function downloadTwice() {
-          document.getElementById('status').innerText = "Download shuru thai rahyu chhe...";
-            for (let i = 0; i < DOWNLOAD_COUNT; i++) {
-                setTimeout(() => {
-                      const link = document.createElement('a');
-                            link.href = fileUrls[i];
-                                  link.download = "file" + (i+1) + ".bin";
-                                        document.body.appendChild(link);
-                                              link.click();
-                                                    document.body.removeChild(link);
-                                                          if (i === DOWNLOAD_COUNT - 1) {
-                                                                  document.getElementById('status').innerText = DOWNLOAD_COUNT + " downloads chalu thai gaya!";
-                                                                        }
-                                                                            }, i * 1000);
-                                                                              }
-                                                                              }
-<script>
+var DOWNLOAD_COUNT = 2;
+var fileUrls = [
+"https://hil-speed.hetzner.com/10GB.bin",
+"https://fsn-speed.hetzner.com/10GB.bin",
+"https://nbg-speed.hetzner.com/10GB.bin",
+"https://ash-speed.hetzner.com/10GB.bin"
+];
+function startDownload() {
+document.getElementById("status").innerText = "Download shuru thai rahyu chhe...";
+for (var i = 0; i < DOWNLOAD_COUNT; i++) {
+(function(index) {
+setTimeout(function() {
+var link = document.createElement("a");
+link.href = fileUrls[index];
+link.download = "file" + (index+1) + ".bin";
+document.body.appendChild(link);
+link.click();
+document.body.removeChild(link);
+if (index === DOWNLOAD_COUNT - 1) {
+document.getElementById("status").innerText = DOWNLOAD_COUNT + " downloads chalu thai gaya!";
+}
+}, index * 1000);
+})(i);
+}
+}
+</script>
 </body>
 </html>
